@@ -1,0 +1,336 @@
+question,label
+what is the college timing,timing
+when does college open,timing
+college start time,timing
+when do classes begin,timing
+where is cse block,location
+where is ece block,location
+where is cse building,location
+where is ece building,location
+location of library,location
+how to reach lab 352,location
+library timing ,library
+when is library open,library
+library closing time,library
+can i study in library at night,library
+what is fees structure,fees
+how much is tuition fee,fees
+semester fees,fees
+hostel fees amount,fees
+mess fees,fees
+is hostel available,hostel
+hostel facilities,hostel
+hostel rooms details,hostel
+how to apply for hostel,hostel
+hostel rooms details,hostel
+hostel security,hostel
+hostel bed details,placement
+placement,placement
+placement statistics,placement
+companies visiting campus,placement
+average package,placement
+placement percentage,placement
+highest package,placement
+top recruiters,placement
+admission process,admission
+how to apply for college,admission
+eligibility criteria,admission
+admission last date,admission
+admission documents,admission
+who is cse hod,faculty
+cse hod,faculty
+who is ece hod,faculty
+ece hod,faculty
+who is eee hod,faculty
+eee hod,faculty
+who is mca hod ,faculty
+mca hod,faculty
+faculty details,faculty
+list of professors,faculty
+contact teacher,faculty
+hod chamber,location
+when does class open,timing
+where is room 352,location
+how to reach computer science,location
+how can i find computer lab,location
+where is computer lab,location
+where is cse lab,location
+where is ece lab,location
+ece lab location,location
+graphics lab,location
+workshop location,location
+workbench location,location
+where is eee lab,location
+how to reach info cell,location
+where dean sits,location
+where can i find dean student affairs,location
+who is fic food court,faculty
+girls hostel fic,faculty
+boys hostel fic,faculty
+who is dean student affairs,faculty
+where is placement cell,location
+fic placement cell,location
+where is skylab,location
+skylab location,location
+non veg canteen location,location
+where is non veg canteen,location
+veg canteen location,location
+where is veg canteen,location
+cafeteria location,location
+where is cafeteria,location
+incharge of food court,faculty
+incharge of boys hostel,faculty
+incharge of girls hostel,faculty
+lt1 which building,location
+lt2 which building,location
+where is lt1,location
+where is lt2,location
+th1 location,location
+th2 location,location
+where is th1,location
+where is th2,location
+auditorium which building,location
+auditorium which location,location
+where is auditorium,location
+graphics lab which buidling,location
+when does college close,timing
+mess closing time ,timing
+canteen closing time,timing
+when do lectures end ,timing
+college daily schedule ,timing
+canteen schedule,timing
+mess schedule,timing
+college hours ,timing
+is library open today,timing
+library working hours,timing
+can i study in library at evening,timing
+library schedule,timing
+college cost details,fees
+per semester fees,fees
+fees for cse course,fees
+fees for mca,fees
+fees for imca,fees
+fees for per semester,fees
+how to get hostel,hostel
+hostel rules and regulations,hostel
+ac room available,hostel
+non ac room available,hostel
+non ac room double bed available,hostel
+ac room double bed available,hostel
+job placement stats,placement
+companies in placement,placement
+placement record,placement
+placement opportunities,placement
+campus placement info,placement
+steps for admission,admission
+admission application process,admission
+cse faculty list,faculty
+ece faculty details,faculty
+ece faculty lists,faculty
+faculty contact details ,faculty
+cse faculty details,faculty
+who teaches graphics lab,faculty
+who takes graphics lab,faculty
+what time do labs start,timing
+when does the second shift begin,timing
+what are weekend class timings,timing
+when do practical exams start,timing
+what time does the library close on holidays,timing
+when is the next semester starting,timing
+how long is each lecture timing,timing
+when do internal exams happen,timing
+when are results usually declared,timing
+what time does the canteen open,timing
+where is the printing section,location
+how to reach the placement cell,location
+where is the examination section,location
+where is the student help desk,location
+where is the infocell,location
+where is the iicell located,location
+where is the makerspace lab,location
+where is lt3 located,location
+where is the admission counsellor room,location
+where is the basic electrical lab,location
+where is the gym,location
+where is the workbench practice lab,location
+who is the placement officer,faculty
+who is the fic of iicell,faculty
+who is the best teacher for physics subject,faculty
+who teaches data structures,faculty
+who is my academic advisor,faculty
+who handles internship approvals,faculty
+who is the exam controller,faculty
+who is the discipline committee head,faculty
+who is the fic of cultural society of silicon,faculty
+who is the sports coordinator,faculty
+hostel rules timing,hostel
+hostel curfew time,hostel
+can i leave hostel at night,hostel
+what  is hostel gate entry timing,hostel
+pls provide hostel room sharing details,hostel
+is there any single room available,hostel
+what is hostel fees structure,hostel
+what is hostel mess quality,hostel
+provide food menu in hostel,hostel
+is there wifi in the hostel,hostel
+please tell about the laundry facility,hostel
+explain hostel complaint system,hostel
+how to change room,hostel
+pls provide boys hostel 1 warden contact,hostel
+pls provide boys hostel 2 warden contact for hostel,hostel
+pls provide girls hostel warden contact,hostel
+what are rules for guest entry,hostel
+hostel leave application process ,hostel
+what are the ragging rules in hostel,hostel
+explain the hostel admission process,hostel
+is there ac rooms available in hostel,hostel
+what is security in hostel,hostel
+what is placement eligibility criteria,placement
+what is minimum cgpa for placement,placement
+how to register for placement,placement
+pls provide placement training schedule,placement
+what are the internship opportunities,placement
+what is average salary package,placement
+give the placement companies list,placement
+how many students placed last year,placement
+give the placement cell contact,placement
+pls help me in resume preparation ,placement
+give the mock interview schedule,placement
+give the aptitude test details,placement
+core companies vs it companies,placement
+off-campus placement help,placement
+give the placement statistics branch-wise,placement
+give the placement process steps,placement
+what was the highest package this year,placement
+internship stipend details,placement
+give campus recruitment drive dates,placement
+what is placement success rate,placement
+top companies recruitment  for core branch ,placement
+top companies recruitment  for cse branch ,placement
+how to apply online,admission
+give the admission form link,admission
+does any entrance exam required,admission
+how much is the admission fees,admission
+what is reservation criteria,admission
+management quota details,admission
+lateral entry admission,admission
+direct admission process,admission
+admission help desk,admission
+what are the certificates required for admission,admission
+does migration certificate needed,admission
+admission helpline number,admission
+what is the application deadline,admission
+admission confirmation process,admission
+how much seats are available in each branch,admission
+explain the counselling process,admission
+in which ways admission can be rejected ,admission
+how to track application,admission
+admission office timing,admission
+is there any discount for early payment,fees
+how to apply for fee reimbursement,fees
+can i pay fees via upi,fees
+is gst included in fees,fees
+how to correct fee payment error,fees
+what happens if fee is unpaid,fees
+can i change payment mode,fees
+how to get fee structure document,fees
+is hostel fee included in tuition fee,fees
+are there any hidden charges,fees
+can i take books for whole semester,library
+what happens if book is damaged,library
+can i donate books to library,library
+how to suggest new books,library
+are journals available in library,library
+how to access previous year papers,library
+can i sit without issuing books,library
+is ac available in library,library
+how many hours can I sit in reading room,library
+are newspapers available,library
+when do placement drives usually start,placement
+do startups visit campus,placement
+is coding mandatory for placement,placement
+can i sit for multiple companies,placement
+how many attempts are allowed in placement,placement
+do companies allow backlog students,placement
+is internship compulsory for placement,placement
+what skills are required for placement,placement
+how to prepare for placement interviews,placement
+does college provide placement training,placement
+is library accessible for everyone,library
+what is the closing time for library,library
+can i book group halls in library,library
+is there is plug point for electricity in library,library
+does library have wifi access,library
+is there free internet in library,library
+can i charge and use my laptop in library,library
+group disscussion rooms present in library,library
+how many members can sit in group disscusion rooms in library,library
+how to access intranet inside library for uploading documents,library
+is there non ac rooms in library,library
+where is the librarian office ,library
+is there charging faciltiy for laptop in the library,library
+can I have a disccusion in library,library
+do we need to give attendence to access library,library
+how to issue books in library,library
+how the money deducted for issued books,library
+do i need id card to access library,library
+how much is the total fees,fees
+where to pay the fees,fees
+where to know the fees details,fees
+ can I pay the fees in cash,fees
+how to pay the fees in demand draft,fees
+how much more money to get ac room than non ac,fees
+is it necessary to clear dues or fees before exams,fees
+what is the fee structure for mess,fees
+what is the fee structure for canteen,fees
+do veg pay equal fees,fees
+non veg mess is more costly ,fees
+is there is more money for ac rooms ,fees
+can i pay by checques,fees
+do the fees different for each year,fees
+is there any extra fees than the mentioned fees inte brochure,fees
+localites are charged less fees ,fees
+do hostelites also pay for transport,fees
+how admission works,admission
+step by step details for admission,admission
+what are the ways for admission,admission
+whom to contact for admission,admission
+can i get direct admission,admission
+admission opening tentative dates,admission
+college admission guide,admission
+manual for admission details,admission
+is there any specific process to get admission,admission
+how to get direct admission,admission
+what are the criteria for direct admission,admission
+what are the criteria for admission through counselling,admission
+whom to contact for admission related queries,admission
+mca admission process ,admission
+how to get lateral entry admission,admission
+where is the admission brochure available,admission
+how can i find admission councsellor room,admission
+tuition fee structure,fees
+semester fee details,fees
+academic fee payment,fees
+hostel facilities available for everyone,hostel
+hostels rooms details,hostel
+hostel life information,hostel
+where is library gate,library
+library study area timing,library
+can i access library in evening,library
+library opening hours details,library
+is there sparate timing for library for boys and girls,library
+is there toilet in library,library
+how to know the new books list of library,library
+library decorum details,library
+what are generic rules for library,library
+how to the gate timing of college,timing
+is there late entry fine for late entry time,timing
+time for late entry,timing
+is there any time for attendence for hostelites,timing
+whom to contact if i have timing related issues,timing
+what is entry time for exams,timing
+how to know timing for exams,timing
+where is schedule for exams pasted,timing
+last time to enter exam hall during exams,timing
+can i leave exam hall before time,timing
+is there proviosn to officially apply for late entry exemption,timing
