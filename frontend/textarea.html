@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CampusGPT</title>
+    <style>
+        /* CSS Variables for Easy Theming */
+        :root {
+            --primary-color: #005A9C; /* A nice university blue */
+            --user-bubble-color: #005A9C;
+            --llm-bubble-color: #F1F1F1;
+            --background-color: #F9F9F9;
+            --text-color: #333;
+            --light-text-color: #FFF;
+            --border-color: #E0E0E0;
+            --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            margin: 0;
+            font-family: var(--font-family);
+            background-color: var(--background-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .chat-container {
+            width: 90%;
+            max-width: 800px;
+            height: 95vh;
+            max-height: 900px;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* Header */
+        .chat-header {
+            padding: 1rem;
+            background-color: #fff;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .header-title {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .header-title h1 {
+            font-size: 1.25rem;
+            margin: 0;
+            color: var(--text-color);
+        }
+        
+        .header-title h1 span {
+            font-weight: 400;
+            font-size: 0.8rem;
+            color: #666;
+            display: block;
+        }
+
+        .new-chat-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.2s;
+        }
+
+        .new-chat-btn:hover {
+            background-color: #004170;
+        }
+
+        /* Message Area */
+        .message-area {
+            flex-grow: 1;
+            padding: 1.5rem;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        /* Welcome Screen */
+        .welcome-screen {
+            text-align: center;
+            margin: auto;
+            color: #555;
+        }
+
+        .welcome-screen .logo {
+            font-size: 3rem;
+        }
+        
+        .welcome-screen h2 {
+            font-size: 1.5rem;
+            color: var(--text-color);
+            margin: 0.5rem 0;
+        }
+
+        .example-prompts {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.75rem;
+            margin-top: 2rem;
+        }
+
+        .prompt-card {
+            background-color: #F5F5F5;
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            cursor: pointer;
+            transition: background-color 0.2s;
+            font-size: 0.9rem;
+            text-align: left;
+        }
+
+        .prompt-card:hover {
+            background-color: #E9E9E9;
+        }
+        
+        /* Chat Bubbles */
+        .message {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            max-width: 85%;
+        }
+
+        .message .avatar {
+            font-size: 1.5rem;
+            margin-top: 5px;
+        }
+
+        .message .text-bubble {
+            padding: 0.75rem 1rem;
+            border-radius: 12px;
+            line-height: 1.5;
+        }
+
+        .llm-message {
+            align-self: flex-start;
+        }
+
+        .llm-message .text-bubble {
+            background-color: var(--llm-bubble-color);
+            color: var(--text-color);
+            border-top-left-radius: 0;
+        }
+
+        .user-message {
+            align-self: flex-end;
+            flex-direction: row-reverse;
+        }
+
+        .user-message .avatar {
+            display: none; /* Often hidden for the user */
+        }
+        
+        .user-message .text-bubble {
+            background-color: var(--user-bubble-color);
+            color: var(--light-text-color);
+            border-top-right-radius: 0;
+        }
+        
+        /* Typing Indicator */
+        .typing-indicator span {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #999;
+            animation: typing 1s infinite;
+        }
+        .typing-indicator span:nth-child(2) { animation-delay: 0.1s; }
+        .typing-indicator span:nth-child(3) { animation-delay: 0.2s; }
+
+        @keyframes typing {
+            0%, 60%, 100% { transform: translateY(0); }
+            30% { transform: translateY(-4px); }
+        }
+
+        /* Input Area */
+        .input-area {
+            padding: 1rem;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            flex-shrink: 0;
+        }
+
+        .input-area textarea {
+            flex-grow: 1;
+            padding: 0.75rem;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            resize: none;
+            font-family: inherit;
+            font-size: 1rem;
+            max-height: 100px;
+        }
+
+        .input-area textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(0, 90, 156, 0.2);
+        }
+
+        .send-btn {
+            background-color: var(--primary-color);
+            border: none;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        
+        .send-btn:hover {
+            background-color: #004170;
+        }
+
+        .send-btn svg {
+            width: 20px;
+            height: 20px;
+            fill: white;
+        }
+        
+        .send-btn:disabled {
+            background-color: #B0B0B0;
+            cursor: not-allowed;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="chat-container">
+        <header class="chat-header">
+            <div class="header-title">
+                <h1>🎓 CampusGPT <span>Your AI Campus Assistant</span></h1>
+            </div>
+            <button class="new-chat-btn" onclick="newChat()">+ New Chat</button>
+        </header>
+
+        <main class="message-area" id="message-area">
+            <!-- Welcome Screen is Loaded via JS -->
+        </main>
+
+        <footer class="input-area">
+            <textarea id="user-input" placeholder="Ask about courses, deadlines, campus life..." rows="1"></textarea>
+            <button id="send-btn" class="send-btn" disabled>
+                <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path></svg>
+            </button>
+        </footer>
+    </div>
+
+    <script>
+        const messageArea = document.getElementById('message-area');
+        const userInput = document.getElementById('user-input');
+        const sendBtn = document.getElementById('send-btn');
+        const welcomeScreenHTML = `
+            <div class="welcome-screen">
+                <div class="logo">🎓</div>
+                <h2>Welcome to CampusGPT!</h2>
+                <p>How can I help you navigate college life today?</p>
+                <div class="example-prompts">
+                    <button class="prompt-card" onclick="setPrompt(this.innerText)">What are the library's hours during finals?</button>
+                    <button class="prompt-card" onclick="setPrompt(this.innerText)">Help me draft an email to my professor for an extension.</button>
+                    <button class="prompt-card" onclick="setPrompt(this.innerText)">Summarize the syllabus for PSYC 101.</button>
+                    <button class="prompt-card" onclick="setPrompt(this.innerText)">Where's the best coffee on campus?</button>
+                </div>
+            </div>`;
+
+        // Load welcome screen initially
+        function newChat() {
+            messageArea.innerHTML = welcomeScreenHTML;
+            userInput.value = '';
+            sendBtn.disabled = true;
+        }
+        newChat();
+
+        // Enable/disable send button based on input
+        userInput.addEventListener('input', () => {
+            sendBtn.disabled = userInput.value.trim() === '';
+            // Auto-resize textarea
+            userInput.style.height = 'auto';
+            userInput.style.height = userInput.scrollHeight + 'px';
+        });
+
+        // Send message on click or Enter key
+        sendBtn.addEventListener('click', sendMessage);
+        userInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendMessage();
+            }
+        });
+        
+        function setPrompt(text) {
+            userInput.value = text;
+            userInput.focus();
+            sendBtn.disabled = false;
+        }
+
+        function sendMessage() {
+            const query = userInput.value.trim();
+            if (query === '') return;
+
+            // Clear welcome screen if it's there
+            if (document.querySelector('.welcome-screen')) {
+                messageArea.innerHTML = '';
+            }
+
+            // Add user message to UI
+            const userMessage = document.createElement('div');
+            userMessage.classList.add('message', 'user-message');
+            userMessage.innerHTML = `<div class="text-bubble">${query}</div>`;
+            messageArea.appendChild(userMessage);
+
+            // Clear input and disable button
+            userInput.value = '';
+            userInput.style.height = 'auto';
+            sendBtn.disabled = true;
+            
+            // Scroll to bottom
+            messageArea.scrollTop = messageArea.scrollHeight;
+            
+            // Simulate LLM response
+            showTypingIndicator();
+        }
+
+        function showTypingIndicator() {
+            const typingIndicator = document.createElement('div');
+            typingIndicator.id = 'typing-indicator';
+            typingIndicator.classList.add('message', 'llm-message');
+            typingIndicator.innerHTML = `
+                <div class="avatar">🎓</div>
+                <div class="text-bubble">
+                    <div class="typing-indicator">
+                        <span></span><span></span><span></span>
+                    </div>
+                </div>`;
+            messageArea.appendChild(typingIndicator);
+            messageArea.scrollTop = messageArea.scrollHeight;
+
+            // Fake API call
+            setTimeout(() => {
+                addLlmResponse("This is a simulated response from CampusGPT. In a real application, this text would come from a Large Language Model API.");
+            }, 2000);
+        }
+
+        function addLlmResponse(response) {
+            // Remove typing indicator
+            const typingIndicator = document.getElementById('typing-indicator');
+            if (typingIndicator) {
+                typingIndicator.remove();
+            }
+
+            // Add LLM response to UI
+            const llmMessage = document.createElement('div');
+            llmMessage.classList.add('message', 'llm-message');
+            // In a real app, you would sanitize this HTML to prevent XSS attacks
+            llmMessage.innerHTML = `
+                <div class="avatar">🎓</div>
+                <div class="text-bubble">${response}</div>`;
+            messageArea.appendChild(llmMessage);
+            
+            // Scroll to bottom
+            messageArea.scrollTop = messageArea.scrollHeight;
+        }
+
+    </script>
+</body>
+</html>

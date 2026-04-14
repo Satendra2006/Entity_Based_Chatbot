@@ -1,0 +1,123 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html,body{
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.category_page{
+height: 60%;
+width: 60%;
+background-color: #374186;
+position: relative;
+z-index: 1; 
+border-radius: 5px;
+opacity: 0.6;
+text-align: center;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+}
+
+.typing {
+  font-family: 'Montserrat', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  line-height: 1.2;
+  color: #ffffff; 
+  text-align: center;
+  width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 3px solid black;
+  font-family: monospace;
+  font-size: 24px;
+
+  animation: typing 4s steps(30) forwards,
+             blink 4s step-end forwards; 
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink {
+  0%, 100% { border-color: black; }
+  50% { border-color: transparent; }
+}
+#bg-video {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -1; 
+  object-fit: cover; 
+}
+
+.category_btn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color:#020202 ;
+ width: 30px;
+ height: 30px;
+ font-size: 20px;
+ padding: 10px 20px;
+ color: aliceblue;
+}
+.tick_div {
+  background-color: #000000;
+  width: 100%;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  color: white;
+}
+
+
+.radio-group {
+  display: none; 
+  align-items: center;
+  gap: 15px;
+}
+
+
+.radio-group.show {
+  display: flex;
+}
+
+.radio-label {
+  cursor: pointer;
+  font-size: 14px;
+}
+
+
+.category_btn2{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color:#41754e ;
+ width: fit-content;
+ height: fit-content;
+border-radius: 10px;
+ font-size: 20px;
+ padding: 8px 15px;
+ color: aliceblue;
+ text-decoration: none;
+}
+.category_btn2:hover{
+  background-color:#28a748
+}
