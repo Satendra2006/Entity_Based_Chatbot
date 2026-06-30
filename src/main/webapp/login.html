@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CampusGPT - Login</title>
+    <style>
+        :root {
+            --primary-color: #005A9C;
+            --background-color: #F9F9F9;
+            --text-color: #333;
+            --border-color: #E0E0E0;
+            --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            --card-bg: white;
+            --button-hover: #004170;
+            --exit-hover: #c82333;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--background-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .login-container {
+            width: 100%;
+            max-width: 480px;
+            padding: 20px;
+        }
+
+        .login-card {
+            background-color: var(--card-bg);
+            border-radius: 16px;
+            padding: 40px 32px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            text-align: center;
+        }
+
+        .logo {
+            font-size: 64px;
+            margin-bottom: 16px;
+        }
+
+        h1 {
+            font-size: 28px;
+            color: var(--text-color);
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 32px;
+            font-size: 14px;
+        }
+
+        .login-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .login-btn {
+            padding: 14px 24px;
+            font-size: 16px;
+            font-weight: 600;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: var(--font-family);
+        }
+
+        .student-btn {
+            background-color: #005A9C;
+            color: white;
+        }
+
+        .student-btn:hover {
+            background-color: #004170;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,90,156,0.3);
+        }
+
+        .faculty-btn {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .faculty-btn:hover {
+            background-color: #218838;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(40,167,69,0.3);
+        }
+
+        .guest-btn {
+            background-color: #6c757d;
+            color: white;
+        }
+
+        .guest-btn:hover {
+            background-color: #5a6268;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(108,117,125,0.3);
+        }
+
+        .exit-btn {
+            background-color: transparent;
+            color: #dc3545;
+            border: 2px solid #dc3545;
+            padding: 12px 24px;
+            font-size: 15px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: var(--font-family);
+            width: 100%;
+        }
+
+        .exit-btn:hover {
+            background-color: #dc3545;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(220,53,69,0.3);
+        }
+
+        .footer {
+            margin-top: 24px;
+            font-size: 12px;
+            color: #999;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .login-card {
+            animation: fadeIn 0.5s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-card">
+            <div class="logo">🎓</div>
+            <h1>CampusGPT</h1>
+            <div class="subtitle">Your AI Campus Assistant</div>
+            
+            <div class="login-buttons">
+                <button class="login-btn student-btn" onclick="redirectTo('studentlogin.html')">
+                    🧑‍🎓 Student Login
+                </button>
+                <button class="login-btn faculty-btn" onclick="redirectTo('facultylogin.html')">
+                    👨‍🏫 Faculty Login
+                </button>
+                <button class="login-btn guest-btn" onclick="redirectTo('guestlogin.html')">
+                    👤 Guest Login
+                </button>
+            </div>
+            
+            <button class="exit-btn" onclick="redirectTo('index.html')">
+                ✕ Exit
+            </button>
+            
+            <div class="footer">
+                © 2026 CampusGPT - Empowering Education
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function redirectTo(page) {
+            // Add a small delay for better UX
+            setTimeout(() => {
+                window.location.href = page;
+            }, 100);
+        }
+    </script>
+</body>
+</html>

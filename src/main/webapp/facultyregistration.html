@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>CampusGPT — Faculty Portal</title>
+  <title>CampusGPT — Create Account</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -57,7 +57,7 @@
       display: flex;
       width: 100%;
       max-width: 860px;
-      min-height: 580px;
+      min-height: 680px;
       border-radius: 16px;
       overflow: hidden;
       box-shadow: 0 8px 40px rgba(10, 60, 40, 0.15);
@@ -169,6 +169,19 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
+      max-height: 680px;
+      overflow-y: auto;
+    }
+
+    .right::-webkit-scrollbar {
+      width: 6px;
+    }
+    .right::-webkit-scrollbar-track {
+      background: #f5f5f5;
+    }
+    .right::-webkit-scrollbar-thumb {
+      background: #ddd;
+      border-radius: 3px;
     }
 
     .faculty-tag {
@@ -191,16 +204,12 @@
       animation: fadeRight 0.5s 0.32s both;
     }
 
-    .field-row {
-      display: flex; gap: 12px; margin-bottom: 0;
-      animation: fadeRight 0.5s 0.38s both;
-    }
-    .field-row .form-group { flex: 1; }
-
     .form-group { margin-bottom: 1rem; animation: fadeRight 0.5s both; }
     .form-group:nth-of-type(1) { animation-delay: 0.38s; }
     .form-group:nth-of-type(2) { animation-delay: 0.44s; }
     .form-group:nth-of-type(3) { animation-delay: 0.50s; }
+    .form-group:nth-of-type(4) { animation-delay: 0.56s; }
+    .form-group:nth-of-type(5) { animation-delay: 0.62s; }
 
     .form-group label {
       display: block;
@@ -212,7 +221,7 @@
     .form-group input[type="email"],
     .form-group input[type="password"],
     .form-group input[type="text"],
-    .form-group select {
+    .form-group input[type="tel"] {
       width: 100%; height: 42px;
       border: 1px solid #ddf0e8;
       border-radius: 8px;
@@ -224,31 +233,18 @@
       font-family: inherit;
     }
     .form-group input[type="password"] { padding-right: 40px; }
-    .form-group input:focus,
-    .form-group select:focus {
+    .form-group input:focus {
       border-color: #2a9d6f;
       box-shadow: 0 0 0 3px rgba(42,157,111,0.12);
     }
     .form-group input::placeholder { color: #bbb; }
 
-    .form-group select {
-      appearance: none;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23aaa' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right 12px center;
-      cursor: pointer; color: #555;
-    }
-    .form-group select option { color: #111; }
-
-    /* ── Error state ── */
-    .form-group input.input-error,
-    .form-group select.input-error {
+    .form-group input.input-error {
       border-color: #e0475a !important;
       box-shadow: 0 0 0 3px rgba(224,71,90,0.12) !important;
       background: #fff9fa;
     }
 
-    /* ── Inline error message ── */
     .error-msg {
       display: none;
       align-items: center;
@@ -273,16 +269,13 @@
     .eye-btn:hover { color: #2a9d6f; }
 
     .row {
-      display: flex; align-items: center; justify-content: space-between;
+      display: flex; align-items: center;
       margin-bottom: 1.3rem;
-      animation: fadeRight 0.5s 0.55s both;
+      animation: fadeRight 0.5s 0.68s both;
     }
 
     .check-label { display: flex; align-items: center; gap: 6px; font-size: 13px; color: #555; cursor: pointer; user-select: none; }
     .check-label input[type="checkbox"] { accent-color: #2a9d6f; width: 14px; height: 14px; cursor: pointer; }
-
-    .forgot { font-size: 13px; color: #2a9d6f; text-decoration: none; }
-    .forgot:hover { text-decoration: underline; }
 
     .btn-primary {
       width: 100%; height: 44px;
@@ -291,10 +284,11 @@
       cursor: pointer; font-family: inherit;
       position: relative; overflow: hidden;
       transition: background 0.15s, transform 0.1s;
-      animation: fadeRight 0.5s 0.61s both;
-      display: flex;              
-  align-items: center;        
-  justify-content: center; 
+      animation: fadeRight 0.5s 0.74s both;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
     }
     .btn-primary::after {
       content: '';
@@ -307,38 +301,12 @@
     .btn-primary:active { transform: scale(0.985); }
     .btn-primary.shake { animation: shake 0.4s ease both; }
 
-    .divider {
-      display: flex; align-items: center; gap: 10px; margin: 1.1rem 0;
-      animation: fadeUp 0.5s 0.67s both;
+    .signin-line {
+      text-align: center; margin-top: 0.5rem; font-size: 13px; color: #777;
+      animation: fadeUp 0.5s 0.80s both;
     }
-    .divider span { font-size: 12px; color: #bbb; white-space: nowrap; }
-    .line { flex: 1; height: 1px; background: #eee; }
-
-    .btn-sso {
-      width: 100%; height: 42px;
-      background: #f7faf9; border: 1px solid #ddf0e8; border-radius: 8px;
-      color: #333; font-size: 14px; font-weight: 500;
-      cursor: pointer; font-family: inherit;
-      display: flex; align-items: center; justify-content: center; gap: 8px;
-      transition: background 0.15s, border-color 0.15s;
-      animation: fadeUp 0.5s 0.72s both;
-    }
-    .btn-sso:hover { background: #edf7f3; border-color: #9dd4b8; }
-
-    .signup-line {
-      text-align: center; margin-top: 1rem; font-size: 13px; color: #777;
-      animation: fadeUp 0.5s 0.78s both;
-    }
-    .signup-line a { color: #2a9d6f; text-decoration: none; font-weight: 500; }
-    .signup-line a:hover { text-decoration: underline; }
-
-    .switch-mode {
-      display: flex; align-items: center; justify-content: center; gap: 6px;
-      margin-top: 10px; font-size: 12px; color: #aaa;
-      animation: fadeUp 0.5s 0.82s both;
-    }
-    .switch-mode a { color: #7f77dd; text-decoration: none; font-weight: 500; font-size: 12px; }
-    .switch-mode a:hover { text-decoration: underline; }
+    .signin-line a { color: #2a9d6f; text-decoration: none; font-weight: 500; }
+    .signin-line a:hover { text-decoration: underline; }
 
     @media (max-width: 640px) {
       body { padding: 0; }
@@ -346,15 +314,12 @@
       .left { padding: 2rem; min-width: unset; }
       .right { padding: 2rem; }
       .hero h1 { font-size: 20px; }
-      .field-row { flex-direction: column; gap: 0; }
     }
   </style>
 </head>
 <body>
 
 <div class="page">
-
-  <!-- ── LEFT ── -->
   <div class="left">
     <div class="logo">
       <div class="logo-icon">
@@ -368,96 +333,78 @@
     </div>
 
     <div class="hero">
-      <div class="badge"><span class="badge-live"></span> Faculty Portal &middot; Secure</div>
-      <h1>Empowering<br>educators with AI.</h1>
-      <p>Manage courses, track student progress, generate materials, and access institutional tools — all in one place.</p>
-      <span class="role-chip">&#128274; FACULTY ACCESS ONLY</span>
+      <div class="badge"><span class="badge-live"></span> Faculty Registration · Secure</div>
+      <h1>Join our<br>educator community.</h1>
+      <p>Create your faculty account to access AI-powered teaching tools, manage courses, and collaborate with your institution.</p>
+      <span class="role-chip">✓ VERIFIED FACULTY ONLY</span>
     </div>
 
     <div class="feature-list">
-      <div class="feature"><div class="dot"></div><span>AI-assisted course material creation</span></div>
-      <div class="feature"><div class="dot"></div><span>Student performance analytics</span></div>
-      <div class="feature"><div class="dot"></div><span>Grade & assignment management</span></div>
-      <div class="feature"><div class="dot"></div><span>Institutional research tools</span></div>
+      <div class="feature"><div class="dot"></div><span>Secure institutional verification</span></div>
+      <div class="feature"><div class="dot"></div><span>Complete faculty access upon approval</span></div>
+      <div class="feature"><div class="dot"></div><span>Dedicated support & resources</span></div>
+      <div class="feature"><div class="dot"></div><span>Start teaching smarter today</span></div>
     </div>
 
-    <div class="footer-left">&copy; 2026 CampusGPT &middot; All rights reserved</div>
+    <div class="footer-left">&copy; 2026 CampusGPT · All rights reserved</div>
   </div>
 
-  <!-- ── RIGHT ── -->
   <div class="right">
-
     <div class="faculty-tag">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
         <path d="M12 14l9-5-9-5-9 5 9 5z"/><path d="M12 14l6.16-3.422A12 12 0 0 1 18 9.5"/>
         <path d="M12 14v7"/><path d="M6 10.5v3.5a6 6 0 0 0 12 0v-3.5"/>
       </svg>
-      Faculty Portal
+      Faculty Registration
     </div>
 
-    <h2>Faculty Sign In</h2>
-    <p class="sub">Access your institutional account to continue</p>
+    <h2>Create Your Account</h2>
+    <p class="sub">Join the faculty portal in just a few steps</p>
 
-    <!-- Employee ID + Department -->
-    <div class="field-row">
-      <div class="form-group">
-        <label for="empid">Employee / Staff ID</label>
-        <input type="text" id="empid" placeholder="e.g. FAC-20045" />
-        <div class="error-msg" id="empid-error">
-          <svg width="11" height="11" viewBox="0 0 16 16" fill="none">
-            <circle cx="8" cy="8" r="7" stroke="#e0475a" stroke-width="1.5"/>
-            <path d="M8 5v4" stroke="#e0475a" stroke-width="1.5" stroke-linecap="round"/>
-            <circle cx="8" cy="11.5" r="0.8" fill="#e0475a"/>
-          </svg>
-          Employee ID is required.
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="dept">Department</label>
-        <select id="dept">
-          <option value="" disabled selected>Select dept.</option>
-          <option>Computer Science</option>
-          <option>Mathematics</option>
-          <option>Physics</option>
-          <option>Humanities</option>
-          <option>Engineering</option>
-          <option>Management</option>
-          <option>Life Sciences</option>
-          <option>Other</option>
-        </select>
-        <div class="error-msg" id="dept-error">
-          <svg width="11" height="11" viewBox="0 0 16 16" fill="none">
-            <circle cx="8" cy="8" r="7" stroke="#e0475a" stroke-width="1.5"/>
-            <path d="M8 5v4" stroke="#e0475a" stroke-width="1.5" stroke-linecap="round"/>
-            <circle cx="8" cy="11.5" r="0.8" fill="#e0475a"/>
-          </svg>
-          Please select a department.
-        </div>
+    <div class="form-group">
+      <label for="fullname">Full Name</label>
+      <input type="text" id="fullname" placeholder="e.g. Dr. John Smith" />
+      <div class="error-msg" id="fullname-error">
+        <svg width="11" height="11" viewBox="0 0 16 16" fill="none">
+          <circle cx="8" cy="8" r="7" stroke="#e0475a" stroke-width="1.5"/>
+          <path d="M8 5v4" stroke="#e0475a" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="8" cy="11.5" r="0.8" fill="#e0475a"/>
+        </svg>
+        Full name is required.
       </div>
     </div>
 
-    <!-- Institutional Email -->
+    <div class="form-group">
+      <label for="phone">Phone Number</label>
+      <input type="tel" id="phone" placeholder="e.g. +91 9876543210" />
+      <div class="error-msg" id="phone-error">
+        <svg width="11" height="11" viewBox="0 0 16 16" fill="none">
+          <circle cx="8" cy="8" r="7" stroke="#e0475a" stroke-width="1.5"/>
+          <path d="M8 5v4" stroke="#e0475a" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="8" cy="11.5" r="0.8" fill="#e0475a"/>
+        </svg>
+        Phone number is required.
+      </div>
+    </div>
+
     <div class="form-group">
       <label for="email">Institutional Email</label>
-      <div class="input-wrap">
-        <input type="email" id="email" placeholder="faculty@university.edu" autocomplete="email" />
-      </div>
+      <input type="email" id="email" placeholder="faculty@university.edu" autocomplete="email" />
       <div class="error-msg" id="email-error">
         <svg width="11" height="11" viewBox="0 0 16 16" fill="none">
           <circle cx="8" cy="8" r="7" stroke="#e0475a" stroke-width="1.5"/>
           <path d="M8 5v4" stroke="#e0475a" stroke-width="1.5" stroke-linecap="round"/>
           <circle cx="8" cy="11.5" r="0.8" fill="#e0475a"/>
         </svg>
-        Please enter your institutional email.
+        Please enter a valid institutional email.
       </div>
     </div>
 
-    <!-- Password -->
     <div class="form-group">
       <label for="password">Password</label>
       <div class="input-wrap">
-        <input type="password" id="password" placeholder="Enter your password" autocomplete="current-password" />
-        <button class="eye-btn" onclick="togglePassword()" type="button" aria-label="Toggle password">
+        <input type="password" id="password" placeholder="Create a strong password" autocomplete="new-password" />
+        <button class="eye-btn" onclick="togglePassword()" type="button">
           <svg id="eye-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
             <path d="M8 3C4.5 3 1.5 8 1.5 8C1.5 8 4.5 13 8 13C11.5 13 14.5 8 14.5 8C14.5 8 11.5 3 8 3Z" stroke="currentColor" stroke-width="1.2"/>
             <circle cx="8" cy="8" r="2" stroke="currentColor" stroke-width="1.2"/>
@@ -470,122 +417,165 @@
           <path d="M8 5v4" stroke="#e0475a" stroke-width="1.5" stroke-linecap="round"/>
           <circle cx="8" cy="11.5" r="0.8" fill="#e0475a"/>
         </svg>
-        Please enter your password.
+        Please enter a password.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="confirmpassword">Confirm Password</label>
+      <div class="input-wrap">
+        <input type="password" id="confirmpassword" placeholder="Re-enter your password" autocomplete="new-password" />
+        <button class="eye-btn" onclick="toggleConfirmPassword()" type="button">
+          <svg id="eye-icon-confirm" width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M8 3C4.5 3 1.5 8 1.5 8C1.5 8 4.5 13 8 13C11.5 13 14.5 8 14.5 8C14.5 8 11.5 3 8 3Z" stroke="currentColor" stroke-width="1.2"/>
+            <circle cx="8" cy="8" r="2" stroke="currentColor" stroke-width="1.2"/>
+          </svg>
+        </button>
+      </div>
+      <div class="error-msg" id="confirmpassword-error">
+        <svg width="11" height="11" viewBox="0 0 16 16" fill="none">
+          <circle cx="8" cy="8" r="7" stroke="#e0475a" stroke-width="1.5"/>
+          <path d="M8 5v4" stroke="#e0475a" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="8" cy="11.5" r="0.8" fill="#e0475a"/>
+        </svg>
+        Passwords do not match.
       </div>
     </div>
 
     <div class="row">
       <label class="check-label">
-        <input type="checkbox" id="remember" /> Keep me signed in
+        <input type="checkbox" id="terms" /> I agree to the terms & conditions
       </label>
-      <a href="#" class="forgot">Forgot password?</a>
     </div>
 
-    <a href="#" class="btn-primary" id="signin-btn" style="text-decoration: none;" onclick="handleSignIn()">Sign in to Faculty Portal</a>
+    <button class="btn-primary" id="signup-btn" onclick="handleSignUp()">Create Account</button>
 
-    <div class="divider">
-      <div class="line"></div>
-      <span>or continue with</span>
-      <div class="line"></div>
-    </div>
-
-    <button class="btn-sso" type="button">
-      <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
-        <rect x="1"  y="1"  width="5" height="5" rx="1" fill="#2a9d6f" opacity="0.9"/>
-        <rect x="8"  y="1"  width="5" height="5" rx="1" fill="#2a9d6f" opacity="0.45"/>
-        <rect x="1"  y="8"  width="5" height="5" rx="1" fill="#2a9d6f" opacity="0.45"/>
-        <rect x="8"  y="8"  width="5" height="5" rx="1" fill="#2a9d6f" opacity="0.9"/>
-      </svg>
-      Sign in with Institutional SSO
-    </button>
-
-    <p class="signup-line">
-      New faculty member? <a href="#">Request portal access</a>
+    <p class="signin-line">
+      Already have an account? <a href="facultylogin.html">Sign in instead</a>
     </p>
-
-    <div class="switch-mode">
-      <span>Are you a student?</span>
-      <a href="#">Switch to Student Login →</a>
-    </div>
-
   </div>
 </div>
 
 <script>
-  /* ── Validation ── */
-  function handleSignIn() {
-    const empid    = document.getElementById('empid');
-    const dept     = document.getElementById('dept');
-    const email    = document.getElementById('email');
-    const password = document.getElementById('password');
-    const btn      = document.getElementById('signin-btn');
+function handleSignUp() {
 
-    const fields = [
-      { el: empid,    err: document.getElementById('empid-error') },
-      { el: dept,     err: document.getElementById('dept-error') },
-      { el: email,    err: document.getElementById('email-error') },
-      { el: password, err: document.getElementById('password-error') },
-    ];
+  const fullname        = document.getElementById('fullname');
+  const phone           = document.getElementById('phone');
+  const email           = document.getElementById('email');
+  const password        = document.getElementById('password');
+  const confirmpassword = document.getElementById('confirmpassword');
+  const btn             = document.getElementById('signup-btn');
 
-    // Reset all
-    fields.forEach(({ el, err }) => {
-      el.classList.remove('input-error');
-      err.classList.remove('visible');
-    });
+  const fields = [
+    { el: fullname,        err: document.getElementById('fullname-error'),        validate: (v) => v.trim() !== '' },
+    { el: phone,           err: document.getElementById('phone-error'),           validate: (v) => v.trim() !== '' },
+    { el: email,           err: document.getElementById('email-error'),           validate: (v) => v.includes('@') && v.includes('.') },
+    { el: password,        err: document.getElementById('password-error'),        validate: (v) => v !== '' },
+    { el: confirmpassword, err: document.getElementById('confirmpassword-error'), validate: (v) => v !== '' && v === password.value },
+  ];
 
-    let valid = true;
+  // 🔹 Reset errors
+  fields.forEach(({ el, err }) => {
+    el.classList.remove('input-error');
+    err.classList.remove('visible');
+  });
 
-    fields.forEach(({ el, err }) => {
-      const isEmpty = el.tagName === 'SELECT'
-        ? el.value === ''
-        : el.value.trim() === '';
+  let valid = true;
 
-      if (isEmpty) {
-        el.classList.add('input-error');
-        err.classList.add('visible');
-        valid = false;
-      }
-    });
+  fields.forEach(({ el, err, validate }) => {
+    if (!validate(el.value)) {
+      el.classList.add('input-error');
+      err.classList.add('visible');
+      valid = false;
+    }
+  });
 
-    // Shake button if invalid
-    if (!valid) {
-      btn.classList.remove('shake');
-      void btn.offsetWidth; // reflow to retrigger
-      btn.classList.add('shake');
-      btn.addEventListener('animationend', () => btn.classList.remove('shake'), { once: true });
-      return;
+  // 🔹 Shake button if invalid
+  if (!valid) {
+    btn.classList.remove('shake');
+    void btn.offsetWidth;
+    btn.classList.add('shake');
+    btn.addEventListener('animationend', () => btn.classList.remove('shake'), { once: true });
+    return;
+  }
+
+  // 🔥 BACKEND CALL
+  const name = fullname.value;
+  const phoneVal = phone.value;
+  const emailVal = email.value;
+  const passwordVal = password.value;
+
+  fetch("http://localhost:8080/College_Enquiry_Chatbot/faculty-register", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded"
+    },
+    body: `name=${name}&phone=${phoneVal}&email=${emailVal}&password=${passwordVal}`
+  })
+  .then(res => res.text())
+  .then(data => {
+
+    if (data === "SUCCESS") {
+
+      alert("Account created successfully! 🎉");
+
+      // ✅ redirect to login page
+      window.location.href = "facultylogin.html";
+
+    } else {
+      alert("Registration failed. Try again.");
     }
 
-    // ✅ All fields filled — proceed
-    document.querySelector('.btn-primary').href='textarea.html'
-  }
-
-  /* ── Clear errors on input ── */
-  ['empid', 'email', 'password'].forEach(id => {
-    document.getElementById(id).addEventListener('input', function () {
-      this.classList.remove('input-error');
-      document.getElementById(id + '-error').classList.remove('visible');
-    });
+  })
+  .catch(err => {
+    console.error(err);
+    alert("Server error");
   });
+}
 
-  document.getElementById('dept').addEventListener('change', function () {
+
+// 🔹 Remove error while typing
+['fullname', 'phone', 'email', 'password', 'confirmpassword'].forEach(id => {
+  document.getElementById(id).addEventListener('input', function () {
     this.classList.remove('input-error');
-    document.getElementById('dept-error').classList.remove('visible');
+    document.getElementById(id + '-error').classList.remove('visible');
   });
+});
 
-  /* ── Eye toggle ── */
-  function togglePassword() {
-    const input = document.getElementById('password');
-    const icon  = document.getElementById('eye-icon');
-    const isHidden = input.type === 'password';
-    input.type = isHidden ? 'text' : 'password';
-    icon.innerHTML = isHidden
-      ? `<path d="M2 2L14 14" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
-         <path d="M6.5 6.7C6.2 7.1 6 7.5 6 8C6 9.1 6.9 10 8 10C8.5 10 8.9 9.8 9.3 9.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
-         <path d="M4.2 4.4C2.8 5.4 1.5 8 1.5 8C1.5 8 4.5 13 8 13C9.4 13 10.7 12.4 11.8 11.6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>`
-      : `<path d="M8 3C4.5 3 1.5 8 1.5 8C1.5 8 4.5 13 8 13C11.5 13 14.5 8 14.5 8C14.5 8 11.5 3 8 3Z" stroke="currentColor" stroke-width="1.2"/>
-         <circle cx="8" cy="8" r="2" stroke="currentColor" stroke-width="1.2"/>`;
-  }
+
+// 🔹 Password toggle
+function togglePassword() {
+  const input = document.getElementById('password');
+  const icon  = document.getElementById('eye-icon');
+
+  const isHidden = input.type === 'password';
+  input.type = isHidden ? 'text' : 'password';
+
+  icon.innerHTML = isHidden
+    ? `<path d="M2 2L14 14"/>
+       <path d="M6.5 6.7C6.2 7.1 6 7.5 6 8"/>
+       <path d="M4.2 4.4C2.8 5.4 1.5 8 1.5 8"/>`
+    : `<path d="M8 3C4.5 3 1.5 8 1.5 8"/>
+       <circle cx="8" cy="8" r="2"/>`;
+}
+
+
+// 🔹 Confirm password toggle
+function toggleConfirmPassword() {
+  const input = document.getElementById('confirmpassword');
+  const icon  = document.getElementById('eye-icon-confirm');
+
+  const isHidden = input.type === 'password';
+  input.type = isHidden ? 'text' : 'password';
+
+  icon.innerHTML = isHidden
+    ? `<path d="M2 2L14 14"/>
+       <path d="M6.5 6.7C6.2 7.1 6 7.5 6 8"/>
+       <path d="M4.2 4.4C2.8 5.4 1.5 8 1.5 8"/>`
+    : `<path d="M8 3C4.5 3 1.5 8 1.5 8"/>
+       <circle cx="8" cy="8" r="2"/>`;
+}
+
 </script>
 
 </body>
